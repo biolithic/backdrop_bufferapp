@@ -1,0 +1,25 @@
+<?php
+
+/**
+ * @file
+ * Install and uninstall functions for Buffer module.
+ */
+
+/**
+ * Move book settings from variables to config.
+ */
+function bufferapp_update_1000() {
+  // Migrate variables to config.
+  $config = config('bufferapp.settings');
+  $config->set('bufferapp_access_token', update_variable_get('bufferapp_access_token'));
+  $config->set('bufferapp_selected_profiles', update_variable_get('bufferapp_selected_profiles'));
+  $config->set('bufferapp_log', update_variable_get('bufferapp_log'));
+  $config->set('bufferapp_debug', update_variable_get('bufferapp_debug'));
+  $config->save();
+
+  // Delete variables.
+  update_variable_del('bufferapp_access_token');
+  update_variable_del('bufferapp_selected_profiles');
+  update_variable_del('bufferapp_log');
+  update_variable_del('bufferapp_debug');
+}

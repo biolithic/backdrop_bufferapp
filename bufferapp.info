@@ -1,0 +1,7 @@
+name = Buffer
+description = "Provides integration between Backdrop and BufferApp service"
+package = Other
+version = 1.x-1.1
+backdrop = 1.x
+type = module
+configure = admin/config/services/bufferapp
